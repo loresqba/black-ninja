@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!-- Siempre las lineas xml van a ir delimitados por la etiqueta openerp-->
+<openerp>
+        <!-- Las etiquetas data tambien delimitan a las record siempre -->
+        <data>
+                <!-- La etiqueta record son la que permitiran mostrar el campo color en el formulario producto-->
+               <record model="ir.ui.view" id="view_partner_formrutas">
+				    <field name="name">res.partner.form.rutas</field>
+				    <field name="model">res.partner</field>
+				    <field name="inherit_id" ref="base.view_partner_form"/>
+				    <field name="arch" type="xml">
+				         <field name="name" position="before">
+				            <field name="codigo" placeholder="Codigo"/>	
+				        </field>				        		
+				        <field name="category_id" position="after">
+				            <field name="gironegocio_id"  widget="many2one_tags" placeholder="Giro de Negocio"/> 
+				            <field name="botella_id"  widget="many2one_tags" placeholder="Botella Abierta/Cerrada"/> 
+				            <field name="propiedad_id"  widget="many2one_tags" placeholder="Clave Propiedad/Renta"/> 
+				            <field name="clasificacion_id"  widget="many2one_tags" placeholder="Clasificación Mayorista/Detallista"/>
+				            <field name="exclusividad_id"  widget="many2one_tags" placeholder="Exclusividad"/>
+				            <field name="impacto_id"  widget="many2one_tags" placeholder="Impacto Si/No"/>					            
+				            <field name="ruta_id"  widget="many2one_tags" placeholder="Rutas..."/>				            					           
+				        </field>				        			       
+				    </field>
+			</record>                
+        </data>
+</openerp>

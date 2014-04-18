@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<menuitem name="Control de Rutas" id="rutas_menu" sequence="90"/>
+		<menuitem name="Datos generales" id="rutas_menu_general" parent="rutas_menu"/>
+		<record model="ir.ui.view" id="rutas_tree">
+			<field name="name">rutas.tree</field>
+			<field name="model">sgs.rutas.ruta</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Rutas">
+					<field name="nombre"/>
+					<field name="observacion"/>
+					<field name="cliente_ids"/>
+					<field name="vendedor_id" domain="[('ruta_ids','=', False)]"/>
+					<field name="supervisor_id"  widget="many2one_tags" placeholder="Supervisor"/>
+                 </tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="rutas_form">
+			<field name="name">rutas.form</field>
+			<field name="model">sgs.rutas.ruta</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Rutas">
+					<field name="nombre"/>
+					<field name="observacion"/>
+					<field name="cliente_ids"/>
+					<field name="vendedor_id" domain="[('ruta_ids','=', False)]"/>
+					<field name="supervisor_id"  widget="many2one_tags" placeholder="Supervisor"/>					
+                </form>
+			</field>
+		</record>
+		<record id="rutas_action" model="ir.actions.act_window">
+            <field name="name">Rutas</field>
+            <field name="res_model">sgs.rutas.ruta</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record model="ir.ui.view" id="supervisores_tree">
+			<field name="name">supervisores.tree</field>
+			<field name="model">sgs.rutas.supervisor</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Supervisores">
+					<field name="nombre"/>
+					<field name="observacion"/>					
+                 </tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="supervisores_form">
+			<field name="name">supervisores.form</field>
+			<field name="model">sgs.rutas.supervisor</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Supervisores">
+					<field name="nombre"/>
+					<field name="observacion"/>									
+                </form>
+			</field>
+		</record>
+        <record id="supervisores_action" model="ir.actions.act_window">
+            <field name="name">Supervisores</field>
+            <field name="res_model">sgs.rutas.supervisor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+         <record model="ir.ui.view" id="vendedores_tree">
+			<field name="name">vendedores.tree</field>
+			<field name="model">sgs.rutas.vendedor</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Vendedores">
+					<field name="nombre"/>
+					<field name="observacion"/>					
+                 </tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="vendedores_form">
+			<field name="name">vendedores.form</field>
+			<field name="model">sgs.rutas.vendedor</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Vendedores">
+					<field name="nombre"/>
+					<field name="observacion"/>									
+                </form>
+			</field>
+		</record>
+        <record id="vendedores_action" model="ir.actions.act_window">
+            <field name="name">Vendedores</field>
+            <field name="res_model">sgs.rutas.vendedor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		<menuitem action="rutas_action" id="rutas_rutas_menu" sequence="1" parent="rutas_menu_general"/>
+		<menuitem action="supervisores_action" id="rutas_supervisores_menu" sequence="1" parent="rutas_menu_general"/>
+	    <menuitem action="vendedores_action" id="rutas_vendedores_menu" sequence="1" parent="rutas_menu_general"/>		
+</data>
+</openerp>
